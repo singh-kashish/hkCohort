@@ -1,3 +1,20 @@
+function getMonthName(monthIndex) {
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return monthNames[monthIndex];
+};
+function getDayName(dayIndex) {
+  const dayNames = [
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+  ];
+  return dayNames[dayIndex];
+};
+function timeInAmPm(hours) {
+  const period = hours >= 12 ? 'PM' : 'AM';
+  return `${hours-12} ${period}`;
+}
 function dateMethods() {
   const currentDate = new Date();
   console.log("Current Date:", currentDate);
@@ -22,6 +39,9 @@ function dateMethods() {
 
   const newDate = new Date(2023, 8, 15); // Creating a new date
   console.log("New Date:", newDate);
+  const currDate = new Date();
+  console.log("Current Date - Time:", `${currDate.getDate()} ${getMonthName(currDate.getMonth())} ${currDate.getFullYear()} - ${currDate.getHours()}:${currDate.getMinutes()}:${currDate.getSeconds()}`);
+  console.log("Current Date - Time in AM/PM:", `${currDate.getDate()} ${getMonthName(currDate.getMonth())} ${currDate.getFullYear()} - ${timeInAmPm(currDate.getHours())}:${currDate.getMinutes()}:${currDate.getSeconds()}`);
 }
 
 // Example Usage for Date Methods
