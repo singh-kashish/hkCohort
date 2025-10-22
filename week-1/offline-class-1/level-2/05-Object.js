@@ -1,3 +1,4 @@
+//'use strict'; -- Enabling strict mode for better error checking, freeze won't throw error in non-strict mode. It'll silently fail.
 // Object Methods Explanation
 function objectMethods(obj) {
   console.log("Original Object:", obj);
@@ -16,7 +17,8 @@ function objectMethods(obj) {
 
   let newObj = Object.assign({}, obj, { newProperty: "newValue" });
   console.log("After Object.assign():", newObj);
-
+  obj.key1 = "modifiedValue";
+  console.log("After modifying key1 directly:", obj);
   obj.addOwnedProperty = "addedValue";
   console.log("After adding a new property directly:", obj);
   console.log("New Object after adding property directly:", obj.hasOwnProperty("key1"));

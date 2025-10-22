@@ -6,19 +6,48 @@
  */
 
 function wait1(t) {
-
+    return modularWait(t);
 }
 
 function wait2(t) {
-
+    return modularWait(t);
 }
 
 function wait3(t) {
-
+    return modularWait(t);
 }
 
+function modularWait(t){
+    let promise = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve();
+        }, t*1000);
+    });
+    return promise;
+}
+
+// function calculateTime(t1, t2, t3) {
+//     const start = Date.now();
+//     return wait1(t1).then(()=>{
+//         return wait2(t2).then(()=>{
+//             return wait3(t3).then(()=>{
+//                 const end = Date.now();
+//                 return end - start;
+//             });
+//         });
+//     })
+// }
+
+// Flattened version of the above function using ES6 arrow functions
 function calculateTime(t1, t2, t3) {
-
-}
+    const start = Date.now();
+    return wait1(t1)
+        .then(()=>wait2(t2))
+        .then(()=>wait3(t3))
+        .then(()=>{
+            const end = Date.now();
+            return end - start;
+        });
+};
 
 module.exports = calculateTime;
